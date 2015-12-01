@@ -34,3 +34,4 @@ array_push($tempArray['features'], $feature);
 $jsonData = json_encode($tempArray, JSON_NUMERIC_CHECK);
 file_put_contents('poi_protezionecivile.geojson', $jsonData);
 ?>
+
