@@ -73,7 +73,6 @@ L.Control.SimpleMarkers = L.Control.extend({//dichiarazioni e metodi della class
     onMapClickAddMarkerGhiaccio: function (e) { //la funzione riceve come argomento l'evento e
         map.removeEventListener('click'); // si fa smettere di gestire il click sull'elemento map
         document.getElementById('map').style.cursor = 'auto';// si rimette lo stile del cursore sull'elemento mappa a quello originale
-
         var popupContent =  "You clicked on the map at " + e.latlng.toString();//creo variabile popupContent e gli inserisco la scritta più la proprietà dell'evento convertito in stringa
         //var the_popup = L.popup({maxWidth: 160, closeButton: false});//creo una variabile the_popup con dimensione data e senza bottone chiusura
         //the_popup.setContent(popupContent); // setContent è un metodo che setta il contenuto HTML del popup
@@ -88,57 +87,69 @@ L.Control.SimpleMarkers = L.Control.extend({//dichiarazioni e metodi della class
 
 
         var json = $.getJSON("http://localhost/poi_protezionecivile.geojson");
-        var id= json.features.length;
+ //       var id= json.features.length;
   // console.log(json); // this will show the info it in firebug console
 var n= function(json)(json.features.length);
-
     $.getJSON("http://localhost/poi_protezionecivile.geojson",function(json) {
      var lunghezza=json.features.length;
 	console.log(e);
        console.log(lunghezza);// this will show the info it in firebug console
     $.getJSON("crea_poi_protezionecivile.php?tipo="+tipo+"&lat="+lat+"&lng="+lng+"&lunghezza="+lunghezza+"");//&id="+id+"
-  });
-
-       
+  });   
        //console.log(lunghezza); // this will show the info it in firebug console
-
-
-//var id= $.getJSON("http://localhost/poi_protezionecivile.geojson.features.length");
-
+var id= $.getJSON("http://localhost/poi_protezionecivile.geojson.features.length");
 	//	var data = /* your parsed JSON here */
     //  var id = data.food.length;
-
       //  $.getJSON("crea_poi_protezionecivile.php?tipo="+tipo+"&lat="+lat+"&lng="+lng+"");//&id="+id+"
-
         carica_geojson();
        // markerList.push(marker);
         return false;
-
     },
-
+//	<script type="text/javascript">
+//   $(function() {
+//     $.getJSON( "js1.php", function( data ) {
+//         var array = data.gennaio.voli.map(function(value){return value.id;});
+//         console.log(array)
+//         var current = array.indexOf("tre");
+//         console.log(current)
+//         var quante=array.length
+//         console.log(quante)
+//         for (var i=0;i<quante;i++){
+//           var a= data.gennaio.voli[i]
+//           var b=a.id
+//           $('<div></div>').html(b).appendTo('body')
+//         }
+//        })
+//      })    
+//</script>
+//- See more at: http://www.devimadesign.com/articoli-jquery/analizzare-file-json-tecniche-fondamentali.php#sthash.QcbIE8VJ.dpuf
+	
+	
     onMapClickAddMarkerFrana: function (e) { //la funzione riceve come argomento l'evento e
         map.removeEventListener('click'); // si fa smettere di gestire il click sull'elemento map
         document.getElementById('map').style.cursor = 'auto';// si rimette lo stile del cursore sull'elemento mappa a quello originale
-
-        var popupContent =  "You clicked on the map at " + e.latlng.toString();//creo variabile popupContent e gli inserisco la scritta più la proprietà dell'evento convertito in stringa
+		var popupContent =  "You clicked on the map at " + e.latlng.toString();//creo variabile popupContent e gli inserisco la scritta più la proprietà dell'evento convertito in stringa
         //var the_popup = L.popup({maxWidth: 160, closeButton: false});//creo una variabile the_popup con dimensione data e senza bottone chiusura
         //the_popup.setContent(popupContent); // setContent è un metodo che setta il contenuto HTML del popup
 
        // var marker = L.marker(e.latlng).addTo(map);// creo una variabile locale marker e gli passo le coordinate e.latlng di L.marker
        //  marker.bindPopup(the_popup).openPopup();
-
         var lat = e.latlng.lat;
         var lng = e.latlng.lng;
         var tipo = "frana";
         console.log(lat);
-
-
-        $.getJSON("crea_poi_protezionecivile.php?tipo="+tipo+"&lat="+lat+"&lng="+lng+"");
-
+		
+		var n= function(json)(json.features.length);
+    $.getJSON("http://localhost/poi_protezionecivile.geojson",function(json) {
+     var lunghezza=json.features.length;
+	console.log(e);
+       console.log(lunghezza);// this will show the info it in firebug console
+    $.getJSON("crea_poi_protezionecivile.php?tipo="+tipo+"&lat="+lat+"&lng="+lng+"&lunghezza="+lunghezza+"");//&id="+id+"
+  });   
+		
        // carica_geojson(); //a cosa mi serve se tanto devo rilodare la pagina?
        // markerList.push(marker);
         return false;
-
     },
 
     //onMapClickAddMarker: function (e) { //la funzione riceve come argomento l'evento e
